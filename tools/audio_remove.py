@@ -11,8 +11,14 @@ from lib import nets
 from lib import spec_utils
 from lib import utils
 
+import torch
+if torch.cuda.is_available():
+    device1 = "gpu"  # 如果存在GPU则选择使用GPU
+else:
+    device1 = "cpu"   # 否则选择使用CPU
+print("当前设备:", device1)
 
-AUDIO_REMOVE_DEVICE = "gpu"
+AUDIO_REMOVE_DEVICE = device1
 AUDIO_REMOVE_FFT_SIZE = 2048
 AUDIO_REMOVE_HOP_SIZE = 1024
 
